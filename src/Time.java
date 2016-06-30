@@ -10,31 +10,19 @@ public class Time {
     public static void main(String[] args) throws IOException, ParseException {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        SimpleDateFormat t1 = new SimpleDateFormat("MM/dd/yyyy");
-        SimpleDateFormat t2 = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat t1 = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat t2 = new SimpleDateFormat("dd.MM.yyyy");
 
-        System.out.println("Введите первую дату в формате ММ/DD/YYYY:");
+        System.out.println("Введите первую дату в формате dd.mm.yyyy:");
         Date date1 = t1.parse(reader.readLine());
-        System.out.println("Введите вторую дату в формате ММ/DD/YYYY:");
+        System.out.println("Введите вторую дату в формате dd.mm.yyyy:");
         Date date2 = t2.parse(reader.readLine());
 
-        int year = 0;
-        int totalMonth = 0;
         long ms = date2.getTime() - date1.getTime();
         long totalDay = ms / 1000 / 60 / 60 / 24;
 
-        if (totalDay > 30) {
-            totalMonth = (int) (totalDay / 30.4);
-                if (totalMonth >= 12 ) {
-                    year = totalMonth / 12;
-                }
-        }
-        int day = (int) (totalDay - (totalMonth * 30.4));
-        int month = (totalMonth - (year * 12));
-
         System.out.print("Разница между датами: ");
-        System.out.print(year + " лет ");
-        System.out.print(month + " месяцев ");
-        System.out.println(day + " дней");
+        System.out.println(totalDay + " дней");
     }
 }
+
